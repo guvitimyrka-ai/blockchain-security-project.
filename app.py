@@ -81,13 +81,39 @@ with col1:
 
     st.divider()
     
-    # Секция тестов из Приложения 3
-    st.write("### Симуляция атаки (Тестирование)")
-    block_to_hack = st.number_input("Номер блока для взлома:", min_value=1, max_value=len(st.session_state.blockchain.chain)-1, step=1)
-    if st.button("🚨 Попытка взлома (Изменить данные)"):
-        st.session_state.blockchain.chain[block_to_hack].transactions = ["ВЗЛОМАНО: Перевод 1000 BTC хакеру"]
-        st.warning(f"Данные в блоке №{block_to_hack} были изменены!")
+ # Находим этот раздел в коде и заменяем его:
+st.subheader("Симуляция атаки (Тестирование)")
 
+
+if len(st.session_state.bc.chain) > 1:
+    block_to_hack = st.number_input("Номер блока для взлома:", min_value=1, max_value=len(st.session_state.bc.chain)-1, step=1)
+    if st.button("🚨 Взломать выбранный блок"):
+        st.session_state.bc.chain[block_to_hack].transactions = ["⚠️ ДАННЫЕ ПОДМЕНЕНЫ!"]
+        st.rerun()
+else:
+    st.info("Добавьте хотя бы один блок (кроме Генезиса), чтобы разблокировать систему тестирования атак.")
+if len(st.session_state.bc.chain) > 1:
+    block_to_hack = st.number_input("Номер блока для взлома:", min_value=1, max_value=len(st.session_state.bc.chain)-1, step=1)
+    if st.button("🚨 Взломать выбранный блок"):
+        st.session_state.bc.chain[block_to_hack].transactions = ["⚠️ ДАННЫЕ ПОДМЕНЕНЫ!"]
+        st.rerun()
+else:
+    st.info("Добавьте хотя бы один блок (кроме Генезиса), чтобы разблокировать систему тестирования атак.")
+
+if len(st.session_state.bc.chain) > 1:
+    block_to_hack = st.number_input("Номер блока для взлома:", min_value=1, max_value=len(st.session_state.bc.chain)-1, step=1)
+    if st.button("🚨 Взломать выбранный блок"):
+        st.session_state.bc.chain[block_to_hack].transactions = ["⚠️ ДАННЫЕ ПОДМЕНЕНЫ!"]
+        st.rerun()
+else:
+    st.info("Добавьте хотя бы один блок (кроме Генезиса), чтобы разблокировать систему тестирования атак.")
+if len(st.session_state.bc.chain) > 1:
+    block_to_hack = st.number_input("Номер блока для взлома:", min_value=1, max_value=len(st.session_state.bc.chain)-1, step=1)
+    if st.button("🚨 Взломать выбранный блок"):
+        st.session_state.bc.chain[block_to_hack].transactions = ["⚠️ ДАННЫЕ ПОДМЕНЕНЫ!"]
+        st.rerun()
+else:
+    st.info("Добавьте хотя бы один блок (кроме Генезиса), чтобы разблокировать систему тестирования атак.")
 with col2:
     st.write("### Визуализация цепочки")
     
