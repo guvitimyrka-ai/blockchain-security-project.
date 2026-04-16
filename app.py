@@ -76,4 +76,24 @@ with col2:
         with st.expander(f"📦 Блок №{b.index} | Хеш: {b.hash[:10]}..."):
             st.write(f"**Данные:** {b.transactions}")
             st.write(f"**Хеш:** {b.hash}")
-            st.write(f"**Пред. хеш:** {b.previous_hash}")
+            st.write(f"**Пред. хеш:** {b.previous_hash}")with col1:
+    st.subheader("Управление блоками")
+    data = st.text_input("Введите данные транзакции:", placeholder="Напр: 'Оплата счета №104'")
+    
+    # Кнопки в одну строку для красоты
+    btn_col1, btn_col2 = st.columns(2)
+    
+    with btn_col1:
+        if st.button("Добавить блок"):
+            if data:
+                st.session_state.bc.add_block([data])
+                st.rerun()
+    
+    with btn_col2:
+        if st.button("🗑️ Сбросить всё"):
+            # Полная очистка состояния
+            del st.session_state.bc
+            st.rerun()
+
+    st.divider()
+    # ... далее остальной код про взлом ...
